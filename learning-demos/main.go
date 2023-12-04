@@ -1,5 +1,7 @@
 package main
 
+// note about variable visibility
+
 import (
 	"log"
 	"time"
