@@ -1,25 +1,21 @@
 package main
 
-// note about variable visibility
+import "log"
 
-import (
-	"log"
-	"time"
-)
+type myStruct struct {
+	FirstName string
+}
 
-type User struct {
-	FirstName   string
-	LastName    string
-	PhoneNumber string
-	Age         int
-	BirthDate   time.Time
+func (m *myStruct) printFirstName() string {
+	return m.FirstName
 }
 
 func main() {
-	user := User{
-		FirstName:   "Jatin",
-		LastName:    "Lachhwani",
-		PhoneNumber: "9999888888",
+	var myVar myStruct
+	myVar.FirstName = "John"
+	myVar2 := myStruct{
+		FirstName: "Mary",
 	}
-	log.Println(user)
+	log.Println(myVar.printFirstName())
+	log.Println(myVar2.printFirstName())
 }
