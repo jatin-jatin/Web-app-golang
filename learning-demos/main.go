@@ -1,14 +1,18 @@
-// practice to name the code file containing main function main.go
 package main
 
-import "fmt"
+import "log"
 
 func main() {
-	/// multiple return values
-	var x, y int = multiple_values()
-	fmt.Println(x, y)
+	var myString string
+	myString = "Green"
+
+	log.Println("mystring is set to", myString)
+	changeUsingPointer(&myString)
+	log.Println("mystring is set to", myString)
+
 }
 
-func multiple_values() (int, int) {
-	return 10, 13
+func changeUsingPointer(s *string) {
+	newValue := "Red"
+	*s = newValue
 }
