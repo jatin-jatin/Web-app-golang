@@ -1,21 +1,34 @@
 package main
 
-import "log"
+import (
+	"fmt"
+	"sort"
+)
 
-type myStruct struct {
+type user struct {
 	FirstName string
+	LastName  string
 }
 
-func (m *myStruct) printFirstName() string {
-	return m.FirstName
+func map_example() {
+	myMap := make(map[string]user)
+	myMap["dog"] = user{
+		FirstName: "jatin",
+		LastName:  "Lachhwani",
+	}
+	fmt.Println(myMap["dog"])
+}
+
+func slice_example() {
+	var slc []string
+	slc = append(slc, "Trevor")
+	slc = append(slc, "Green")
+	fmt.Println(slc)
+	sort.Strings(slc)
+	fmt.Println(slc)
 }
 
 func main() {
-	var myVar myStruct
-	myVar.FirstName = "John"
-	myVar2 := myStruct{
-		FirstName: "Mary",
-	}
-	log.Println(myVar.printFirstName())
-	log.Println(myVar2.printFirstName())
+	map_example()
+	slice_example()
 }
