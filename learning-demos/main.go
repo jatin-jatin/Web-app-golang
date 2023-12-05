@@ -1,34 +1,15 @@
 package main
 
-import (
-	"fmt"
-	"sort"
-)
-
-type user struct {
-	FirstName string
-	LastName  string
-}
-
-func map_example() {
-	myMap := make(map[string]user)
-	myMap["dog"] = user{
-		FirstName: "jatin",
-		LastName:  "Lachhwani",
-	}
-	fmt.Println(myMap["dog"])
-}
-
-func slice_example() {
-	var slc []string
-	slc = append(slc, "Trevor")
-	slc = append(slc, "Green")
-	fmt.Println(slc)
-	sort.Strings(slc)
-	fmt.Println(slc)
-}
+import "fmt"
 
 func main() {
-	map_example()
-	slice_example()
+	count := 12
+	for i := 0; i < count; i++ {
+		fmt.Println(i)
+	}
+	fmt.Println("************************************************")
+	lst := []string{"golang", "python", "java", "cpp"}
+	for i, language := range lst {
+		fmt.Println(i, language)
+	}
 }
