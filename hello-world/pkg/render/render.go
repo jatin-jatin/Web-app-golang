@@ -7,36 +7,41 @@ import (
 	"log"
 	"net/http"
 	"path/filepath"
+
+	"github.com/jatin-jatin/go-course/pkg/config"
 )
 
+// var functions = template.FuncMap{}
+var app *config.AppConfig
+
+// NewTemplates sets the config for the template package
+func NewTemplates(a *config.AppConfig) {
+	app = a
+}
+
 func RenderTemplate(w http.ResponseWriter, tmpl string) {
-	// create a template cache
-	tc, err := createTemplateCache()
-	if err != nil {
-		log.Fatal(err)
-	}
+	// assign template cache
+	tc := app.TemplateCache
 	// get requested template from cache
-	// render the template
 	t, ok := tc[tmpl]
 	if !ok {
-		log.Fatal(fmt.Errorf("requested file/template missing for %s", tmpl))
+		log.Fatal(fmt.Errorf("requested file/template missing for %s in cache", tmpl))
 	}
+	// render the template
 	buf := new(bytes.Buffer)
-	err = t.Execute(buf, nil)
+	err := t.Execute(buf, nil)
 	if err != nil {
 		log.Println("error parsing template", err)
 		return
 	}
 	_, err = buf.WriteTo(w)
 	if err != nil {
-		log.Println("error parsing template", err)
+		log.Println("error writing template to browser", err)
 		return
 	}
-	// parsedTemplate, _ := template.ParseFiles("./templates/"+tmpl, "./templates/base.layout.html")
-	// err := parsedTemplate.Execute(w, nil)
 }
 
-func createTemplateCache() (map[string]*template.Template, error) {
+func CreateTemplateCache() (map[string]*template.Template, error) {
 	myCache := map[string]*template.Template{}
 
 	//  get all of the files named *page.tmpl from ./templates
