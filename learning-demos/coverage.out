@@ -1,0 +1,7 @@
+mode: set
+example.com/m/learning-demos/main.go:8.13,10.16 2 0
+example.com/m/learning-demos/main.go:10.16,13.3 2 0
+example.com/m/learning-demos/main.go:14.2,14.43 1 0
+example.com/m/learning-demos/main.go:17.44,19.12 2 1
+example.com/m/learning-demos/main.go:19.12,21.3 1 1
+example.com/m/learning-demos/main.go:22.2,23.20 2 1
